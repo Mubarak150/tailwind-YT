@@ -12,3 +12,7 @@ $("#first-name").on("change", function () {
         alertText.text("go ahead!");
     }
 });
+
+$("#h1").click(function() {
+    $("#h1").css("color", "yellow");
+})
