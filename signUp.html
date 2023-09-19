@@ -5,73 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="signUp.js"></script>
 </head>
-<!-- to body give no properties at all . just color set to lightest gray  -->
+
 <body class="bg-gray-100 px-16" >
     <span class="self-center text-2xl my-4 font-light whitespace-nowrap dark:text-white">chai<span class="text-yellow-500">holic</span></span>
-    <!-- this div be given margin , rounded corners, bg grey darker than body, a shadow -->
-    <div class="bg-gray-200 p-8 shadow-lg rounded grid grid-cols-1 lg:grid-cols-1 ">
-        <!-- sign Up -->
-        <form action="sendto:mkmubarak2347@gmail.com">
 
-            <div class="firstName">
-                <label for="first-name">First Name</label>
+    <div id="main-container" class="mx-auto  rounded-lg grid grid-cols-3 w-4/5">
+        <div id="text-container" class="col-span-1 px-auto">
+            <div class="bg-gray-200 p-8 shadow-lg rounded grid ">
+
+                <!-- sign Up -->
+                <h2 class="text-gray-800 text-2xl font-bold mb-1">Sign Up</h2>
+                
+                    <div >
+                        <label>First Name</label>
+                    </div>
+                    <div>
+                        <input id="first-name" class="p-1 border-0 text-yellow-600 w-full" type="text" placeholder="First name"/>
+                        <p id="first-name-alert" class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                    </div>
+                    <div class="lastName">
+                        <label>Last name</label>
+                    </div>
+                    <div>
+                        <input class="p-1 border-0  text-yellow-600 w-full" type="text" placeholder="Last name">
+                        <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                    </div>
+                    <div>
+                        <label id="father-name">Father Name</label>
+                    </div>
+                    <div>
+                        <input class="p-1 border-0  text-yellow-600 w-full" type="text" placeholder="Father Name">
+                        <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                    </div>
+                    <div class="email">
+                        <label>Email</label>
+                    </div>
+                    <div>
+                        <input class="p-1 border-0  text-yellow-600 w-full" type="email" placeholder="Enter email">
+                        <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                    </div>
+                    <div>
+                        <label for="password">Set Password</label>
+                    </div>
+                    <div>
+                        <input class="p-1 border-0 text-yellow-600 w-full" type="password" placeholder="6 charachers">
+                        <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                    </div>
+                    <div>
+                        <label class="p-1 border-0" for="password">Confirm Password</label>
+                    </div>
+                    <div>        
+                        <input id="password" class="p-1 border-0  text-yellow-600 w-full" type="password">
+                        <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
+                        <p class="text-red-500 text-sm hidden">** passwords must match...</p>
+                    </div>
+                    <br>
+                    
+                    <input id="sign-up" class="align-text-centre p-2 px-auto rounded-sm shadow-lg text-gray-700 bg-yellow-500 w-full"  value="sign up">
+                
+    
+
             </div>
-            <div>
-                <input class="p-1 border-0" type="text" placeholder="First name">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-            </div>
-            <div class="lastName">
-                <label for="name">Last name</label>
-            </div>
-            <div>
-                <input class="p-1 border-0" type="text" placeholder="Last name">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-            </div>
-            <div class="fatherName">
-                <label for="name">Father Name</label>
-            </div>
-            <div>
-                <input class="p-1 border-0" type="text" placeholder="Father Name">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-            </div>
-            <div class="email">
-                <label for="email">Email</label>
-            </div>
-            <div>
-                <input class="rounded-md p-1 border-0 text-yellow-600" type="email" placeholder="Enter email">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-            </div>
-            <div>
-                <label for="password">Set Password</label>
-            </div>
-            <div>
-                <input class="p-1 border-0" type="password" placeholder="6 charachers">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-            </div>
-            <div>
-                <label class="p-1 border-0" for="password">Confirm Password</label>
-            </div>
-            <div>        
-                <input id="password" class="p-1 border-0" type="password">
-                <p class="text-red-500 text-sm hidden">* please fill this portion...</p>
-                <p class="text-red-500 text-sm hidden">** passwords must match...</p>
-            </div>
-            <br>
+        </div>
+        <div id="image-container" class=" col-span-2">
+            <img class="w-full h-full object-cover object-center shadow-xl " src="signTea.jpg" alt="cup-of-tea">
+        </div>
             
-            <input class="sign-up p-2 px-4 rounded-sm shadow-lg bg-gray-500 text-yellow-500" type="submit" value="sign up">
-        </form>
-
-        <!-- sign in -->
-        <center>
-            <p>sign in, if you already have an account</p>
-            <button class="p-2 px-4 mt-2  rounded-sm shadow-lg border-gray-400 text-yellow-500">sign in</button>
-        </center>
     </div>
 
-
-    <script src="signUp.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- sign in -->
+    <center>
+        <br>
+        <p ><a class="text-yellow-600 font-bold" href="">sign in</a>, if you already have an account</p>
+    </center>
+    
 
 
 </body>
