@@ -11,7 +11,7 @@
     <script src="signUp.js"></script>
 </head>
 
-<body class="bg-gray-100  bg-gray-800" >
+<body>
 
     <div id="main-container" style="background-image: url('tea-bg.avif')" class="bg-no-repeat bg-cover mx-auto grid grid-cols-5 w-screen h-screen shadow-lg ">
         
@@ -25,39 +25,39 @@
                 <!-- sign Up -->
                 <h2 id="h1" class="text-gray-200 text-2xl font-bold mx-1">Sign <span class="text-yellow-500">up</span></h2>
                 <br>
-                <form class="grid grid-cols-1">
+                <form id="form" class="grid grid-cols-2 gap-x-1"  autocomplete="on">
 
                     <div>
-                        <input id="first-name" class="name p-1 m-1  text-gray-200 w-full inline-block bg-black  opacity-50 placeholder-white-400" type="text" placeholder="First name"/>
-                        <!-- <p id="alerte" class="text-red-500 text-sm hidden">* please fill this portion...</p> -->
+                        <input id="first-name" class="name first-name p-1 m-1   text-gray-200 w-full inline-block bg-black  opacity-50 placeholder-white-400" type="text" placeholder="First name"/>
+                        <p  class="alert text-yellow-200 font-extrabold text-sm"></p>
+                  </div>
+                  <div>
+                        <input class="name last-name p-1 m-1   text-gray-200 w-full gap-1 inline-block bg-black  opacity-50 placeholder-white-400" type="text" placeholder="Last name">
+                        <p  class="alert text-yellow-500 font-bold text-sm"></p>
+                    </div>
                   
-                        <input class="name p-1 m-1   text-gray-200 w-full inline-block bg-black  opacity-50 placeholder-white-400" type="text" placeholder="Last name">
-                        <!-- <p id="alert" class="text-red-500 text-sm">* please fill this portion...</p> -->
+                    <div class="col-span-2">
+                        <input class="name father-name p-1 m-1 w-full text-yellow-500 w-full bg-black  opacity-50 placeholder-white-400 " type="text" placeholder="Father Name">
+                        <p  class="alert text-yellow-500 font-bold text-sm"></p>
+                    </div>
+                  
+                    <div class="col-span-2">
+                        <input id="emailAddr" class=" p-1 m-1 text-gray-200 w-full w-full bg-black  opacity-50 placeholder-white-400" type="email" placeholder="Enter email">
+                        <p  class="alert text-yellow-500 font-bold text-sm"></p>
                     </div>
                   
                     <div>
-                        <input class="name p-1 m-1   text-yellow-500 w-full inline-block bg-black  opacity-50 placeholder-white-400" type="text" placeholder="Father Name">
-                        <!-- <p id="alert" class="text-red-500 text-sm hidden">* please fill this portion...</p> -->
-                    </div>
-                  
-                    <div>
-                        <input class="name p-1 m-1   text-gray-200 w-full inline-block bg-black  opacity-50 placeholder-white-400" type="email" placeholder="Enter email">
-                        <!-- <p class="text-red-500 text-sm hidden">* please fill this portion...</p> -->
-                    </div>
-                  
-                    <div>
-                        <input id="password" class="p-1 m-1   text-gray-200 w-full inline-block bg-black opacity-50 placeholder-white-400" type="password" placeholder="password, 6 charachers min">
-                        <!-- <p class="text-red-500 text-sm hidden">* please fill this portion...</p> -->
+                        <input id="password" class="password p-1 m-1 text-gray-200 w-full inline-block bg-black opacity-50 placeholder-white-400" type="password" placeholder="password, 6 charachers min">
+                        <p  class="alert text-yellow-500 font-bold text-sm"></p>
                     </div>
              
                     <div>        
-                        <input id="confirm-password" class="p-1 m-1 text-gray-200 font-light w-full  opacity-70 inline-block bg-black  placeholder-white-400" type="password" placeholder="Confirm password">
-                        <!-- <p class="text-red-500 text-sm hidden">* please fill this portion...</p> -->
-                        <!-- <p class="text-red-500 text-sm hidden">** passwords must match...</p> -->
+                        <input id="confirm-password" class="confirm-password p-1 m-1 text-gray-200 font-light w-full  opacity-50 inline-block bg-black  placeholder-white-400 col-span-2" type="password" placeholder="Confirm password">
+                        <p  class="alert text-yellow-500 font-bold text-sm"></p>
                     </div>
                     <br>
                     
-                    <input id="sign-up" class="p-1  opacity-70 rounded-sm shadow-lg text-gray-700 bg-white-200 w-full hover:bg-green-200" type="submit" value="sign up">
+                    <button id="sign-up" class="p-1  opacity-80 rounded-sm shadow-lg text-gray-700 bg-black w-full hover:bg-green-200 col-span-2">sign up</button>
                 </form>
             </div>
             <center>

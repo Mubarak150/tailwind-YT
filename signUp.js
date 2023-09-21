@@ -1,81 +1,131 @@
-$(document).ready(function() {
-   var stop = false;
-   var appeared = false;
-   var appeared2=true;
-   var confirmPassword = 0 ;
-   var password = 0;
-   var message2; 
-   
+$(document).ready(function(){
+  var name = 0;
+  var box = 0; 
+  var alert = 0; 
+  var password = 0; 
+  var confirmPassword = 0; 
 
-    $(".name").on("input", function() {
-      var one = $(this).val(); 
-      console.log(one);
-      console.log(one.length)
-        
-        if(one === "" && !appeared ) { 
-        appeared = true;
-        var message = $(this).after("<p class='fill-alert text-yellow-200 font-bold text-sm'>* please fill this portion...</p>");
-        $("#sign-up").prop("disabled", true);
-        $("#sign-up").css("backgroundColor", "red")
-        $("#sign-up").css("color", "white")
-        $(this).css("border", "2px solid red")
-        
-        }
-        else {
-          appeared = false;
-          message = $(this).next(".fill-alert").remove();
-          $("#sign-up").prop("disabled", false);
-          $("#sign-up").css("backgroundColor", "")
-          $("#sign-up").css("color", "")
-          $(this).css("border", "")
+  $(".name").on("input", function(){
+    name = $(this).val();
+    box  = $(this);
+    alert = box.next();
+    validateName (name, box, alert);
+  })
+
+  $("#emailAddr").on("input", function(){
+    mail = $(this).val();
+    validateEmail(mail);
+  })
+
+  $("#password").on("input", function(){
+    password = $(this).val();
+    box  = $(this);
+    alert = box.next();
+    lengthPassword (password, box, alert);
+  })
+
+  $("#confirm-password").on("input", function(){
+    confirmPassword = $(this).val();
+    box  = $(this);
+    alert = box.next();
+    matchPassword (confirmPassword, box, alert);
+  })
+
+
+
+/////////////////////////////////////////////////////// functions //
+function lengthPassword(password, box, alert) {
+
+  if (password === "") {
+    alert.text("* this field is mandatory.");
+    box.css( "border", "4px double red" );
+    return false;
+  } else if (password.length < 6) {
+      alert.text("Password must be at least 6 characters.");
+      box.css( "border", "4px double red" );
+      return false;
+  } else if (password.length > 10) {
+      alert.text("Password cannot be longer than 10 characters.");
+      box.css( "border", "4px double red" );
+      return false;
+  } else if (password.length >= 6 && password.length <= 10) {
+    alert.empty();
+    box.css( "border", "4px double green" );
+    return true;
+  }
+}
+/////////////////////////////////////////////////////////////////////////
+function matchPassword(confirmPassword, box, alert) {
+  // Check if the passwords match
+  if (password !== confirmPassword) {
+      alert.text("Passwords do not match.");
+      box.css( "border", "4px double red" );
+      return false;
+  }
+  else {
+    box.css( "border", "4px double green" );
+  alert.empty();
+  return true;
+  }
+  
+}
+////////////////////////////////////////////////
+
+function validateEmail(inputText) {
+
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(inputText.match(mailformat)) {
+
+    $("#emailAddr").css( "border", "4px double green" );
+    $("#emailAddr").next().empty();
+    return true;
+  }
+
+  else {
+    $("#emailAddr").css( "border", "4px double red" );
+    $("#emailAddr").next().text("* You have entered an invalid email address!");
+    return false;
+  }
+}
+
+////////////////////////////////////////////////////
+
+function validateName (name, box, alert) {
+    if(name == "") {
+      alert.text("* this field is mandatory.");
+      box.css( "border", "3px double red" );
+    }
+    else if (name.length > 0 && name.length < 4 ) {
+      for (var i = 0; i < name.length; i++) {
+        if(name[i] === " ") {
+          alert.text("* no spaces allowed.");
+          box.css( "border", "3px double red" );
+          return;
         }
       
-    }) // up to this line the code is fine for me.
+        else {
+          alert.text("* the name is too short.");
+          box.css( "border", "3px double yellow" );
+        }
+      }
+      
+    }
 
-    ////////// pass word justification 
-    $("#password").on("input", function() {
-      password = $("#password").val(); 
+    else if (name.length >= 4) {
+      for (var i = 0; i < name.length; i++) {
+        if(name[i] === " ") {
+          alert.text("* no spaces allowed.");
+          box.css( "border", "3px double red" );
+          return;
+        }
+      
+        else {
+          alert.empty();
+          box.css( "border", "3px double green" );
+        }
+      }
+    }
 
-    })
-    
-    $("#confirm-password").on("input", function() {
-      confirmPassword = $("#confirm-password").val(); 
-      // console.log(confirmPassword);
-      // console.log(confirmPassword.length)
-      // console.log(password);
-      // console.log(password.length)
-      appeared2=true;
-
-      // if(password.length === confirmPassword.length ) {
-        if(password !== confirmPassword && appeared2)  {
-            appeared2 = true;
-            message2 = $(".match-alert").remove();
-            message2 = $("#confirm-password").before("<p class='match-alert text-yellow-200 font-bold text-sm'>** passwords must match...</p>");
-            $("#sign-up").prop("disabled", true);
-            $("#sign-up").css("backgroundColor", "red")
-            $("#sign-up").css("color", "white")
-            $("#password").css("border", "2px solid red")
-            $("#confirm-password").css("border", "2px solid red")
-            console.log("ture")
-
-            }
-      else {
-        message2 = $(".match-alert").remove();
-        $("#sign-up").prop("disabled", false);
-        $("#sign-up").css("backgroundColor", "")
-        $("#sign-up").css("color", "")
-        $("#password").css("border", "")
-        $("#confirm-password").css("border", "")
-        appeared2 = false;
-        console.log("falsss")
-            
-          }
-    })
-
-    
- 
-})
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
- 
+  }
+  
+});
