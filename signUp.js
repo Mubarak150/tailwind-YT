@@ -1,20 +1,37 @@
+// click on button remains
+
 $(document).ready(function(){
   var name = 0;
   var box = 0; 
   var alert = 0; 
-  var password = 0; 
-  var confirmPassword = 0; 
+  var password = $("#password").val(); 
+  var confirmPassword = $("#confirm-password").val();
+  // array content
+  var firstName = "";
+  var lastName = ""; //$(".last-name").val();
+  var fatherName = ""; //$(".father-name").val(); 
+  var email = ""; // $("#emailAddr").val(); 
+  // var array = [firstName, lastName, fatherName, email, password, confirmPassword] //  array 
+  updateSignInButton();
+  
 
-  $(".name").on("input", function(){
-    name = $(this).val();
-    box  = $(this);
-    alert = box.next();
-    validateName (name, box, alert);
-  })
+  $(".name").on("input", function () {
+    var inputValue = $(this).val();
+    if ($(this).hasClass("first-name")) {
+      firstName = inputValue;
+    } else if ($(this).hasClass("last-name")) {
+      lastName = inputValue;
+    } else if ($(this).hasClass("father-name")) {
+      fatherName = inputValue;
+    }
+    updateSignInButton();
+    validateName(inputValue, $(this), $(this).next());
+  });
 
   $("#emailAddr").on("input", function(){
     mail = $(this).val();
     validateEmail(mail);
+    updateSignInButton()
   })
 
   $("#password").on("input", function(){
@@ -22,6 +39,7 @@ $(document).ready(function(){
     box  = $(this);
     alert = box.next();
     lengthPassword (password, box, alert);
+    updateSignInButton()
   })
 
   $("#confirm-password").on("input", function(){
@@ -29,6 +47,7 @@ $(document).ready(function(){
     box  = $(this);
     alert = box.next();
     matchPassword (confirmPassword, box, alert);
+    updateSignInButton()
   })
 
 
@@ -56,18 +75,21 @@ function lengthPassword(password, box, alert) {
 }
 /////////////////////////////////////////////////////////////////////////
 function matchPassword(confirmPassword, box, alert) {
-  // Check if the passwords match
-  if (password !== confirmPassword) {
+  if (confirmPassword === "") {
+    alert.text("* this field is mandatory.");
+    box.css( "border", "4px double red" );
+    return false;
+  }
+  else if (password !== confirmPassword) {
       alert.text("Passwords do not match.");
       box.css( "border", "4px double red" );
       return false;
   }
   else {
     box.css( "border", "4px double green" );
-  alert.empty();
-  return true;
-  }
-  
+    alert.empty();
+    return true;
+  } 
 }
 ////////////////////////////////////////////////
 
@@ -126,6 +148,26 @@ function validateName (name, box, alert) {
       }
     }
 
+  }
+
+  /////////////checking sign in ///
+  // disabling sign up button if 
+  function updateSignInButton() {
+    if (firstName === "" || lastName === "" || fatherName === "" || email === "" || password === "" || confirmPassword === "" || !matchPassword ()  || !lengthPassword () || !validateEmail ()) {
+      $("#sign-up").prop('disabled', true);
+      $("#sign-up").css("backgroundColor", "red");
+      $("#sign-up").css("color", "white");
+      $("#sign-up").css("opacity", "0.5")
+      console.log("entered if")
+    }
+    else {
+    
+      $("#sign-up").prop('disabled', false);
+      $("#sign-up").css("backgroundColor", "green");
+      $("#sign-up").css("color", "white");
+      console.log("entered else")
+      $("#sign-up").css("opacity", "1")
+    }
   }
   
 });
