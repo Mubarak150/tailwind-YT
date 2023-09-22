@@ -9,7 +9,7 @@ $(document).ready(function(){
   var lastName = ""; //$(".last-name").val();
   var fatherName = ""; //$(".father-name").val(); 
   var email = ""; // $("#emailAddr").val(); 
-  updateSignInButton();
+  updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail)
   
 
   $(".name").on("input", function () {
@@ -21,14 +21,15 @@ $(document).ready(function(){
     } else if ($(this).hasClass("father-name")) {
       fatherName = inputValue;
     }
-    updateSignInButton();
     validateName(inputValue, $(this), $(this).next());
+    updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail)
+    
   });
 
   $("#emailAddr").on("input", function(){
     mail = $(this).val();
     validateEmail(mail);
-    updateSignInButton()
+    updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail)
   })
 
   $("#password").on("input", function(){
@@ -36,7 +37,7 @@ $(document).ready(function(){
     box  = $(this);
     alert = box.next();
     lengthPassword (password, box, alert);
-    updateSignInButton()
+    updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail)
   })
 
   $("#confirm-password").on("input", function(){
@@ -44,7 +45,7 @@ $(document).ready(function(){
     box  = $(this);
     alert = box.next();
     matchPassword (confirmPassword, box, alert);
-    updateSignInButton()
+    updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail)
   })
 
 
@@ -149,8 +150,8 @@ function validateName (name, box, alert) {
 
   /////////////checking sign in ///
   // disabling sign up button if 
-  function updateSignInButton() {
-    if (firstName === "" || lastName === "" || fatherName === "" || email === "" || password === "" || confirmPassword === "" || !matchPassword ()  || !lengthPassword () || !validateEmail ()) {
+  function updateSignInButton(firstName, lastName, fatherName, email, password, confirmPassword, matchPassword, lengthPassword, validateEmail) {
+    if (firstName === "" || lastName === "" || fatherName === "" || email === "" || password === "" || confirmPassword === "" || !matchPassword  || !lengthPassword || !validateEmail) {
       $("#sign-up").prop('disabled', true);
       $("#sign-up").css("backgroundColor", "red");
       $("#sign-up").css("color", "white");
