@@ -1,5 +1,3 @@
-// click on button remains
-
 $(document).ready(function(){
   var name = 0;
   var box = 0; 
@@ -11,7 +9,6 @@ $(document).ready(function(){
   var lastName = ""; //$(".last-name").val();
   var fatherName = ""; //$(".father-name").val(); 
   var email = ""; // $("#emailAddr").val(); 
-  // var array = [firstName, lastName, fatherName, email, password, confirmPassword] //  array 
   updateSignInButton();
   
 
@@ -158,7 +155,7 @@ function validateName (name, box, alert) {
       $("#sign-up").css("backgroundColor", "red");
       $("#sign-up").css("color", "white");
       $("#sign-up").css("opacity", "0.5")
-      console.log("entered if")
+      // console.log(firstName)
     }
     else {
     
